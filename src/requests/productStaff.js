@@ -31,7 +31,7 @@ export const createProduct = async (productState) => {
 
     // console.log(productData);
     try {
-        await axios.post("http://localhost:8000/api/create-product", productData, {
+        await axios.post(process.env.REACT_APP_URL + "/api/create-product", productData, {
             // headers: {
             //     "Content-Type": "application/json"
             // }
@@ -43,7 +43,7 @@ export const createProduct = async (productState) => {
 }
 
 export const getProducts = async () => {
-    const response = await axios.get("http://localhost:8000/api/get-products");
+    const response = await axios.get(process.env.REACT_APP_URL + "/api/get-products");
     return response.data;
 }
 
@@ -51,12 +51,11 @@ export const massDelete = async (productIds) => {
     if (productIds.length > 0) {
         const data = { productIds };
         try {
-            await axios.delete("http://localhost:8000/api/delete-products", { data });
+            await axios.delete(process.env.REACT_APP_URL + "/api/delete-products", { data });
             return true;
         } catch (error) {
             return false;
         }
-
 
     }
 
