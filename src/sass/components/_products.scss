@@ -1,0 +1,11 @@
+.products {
+    max-width: 1250px;
+    // background-color: red;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: space-around;
+    row-gap: 13px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}

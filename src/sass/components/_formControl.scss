@@ -1,0 +1,41 @@
+.control {
+    width: 100vw;
+    position: fixed;
+    z-index: 1000;
+    background-color: #FAF9F6;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    .control-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 60px;
+        border-bottom: 1px solid black;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 10px;
+
+        .btn-group {
+            display: flex;
+            gap: 5px;
+            margin: 4px 0;
+
+            .btn {
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 0 4px;
+                cursor: pointer;
+                color: black;
+                font-weight: bold;
+                background-color: #A7C7E7;
+                transition: 0.15s;
+
+                &:hover {
+                    background-color: #bfdaf5;
+                }
+            }
+        }
+    }
+}

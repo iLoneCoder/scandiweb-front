@@ -1,0 +1,14 @@
+.card {
+    display: flex;
+    border-radius: 5px;
+    display: inline-block;
+    width: 200px;
+    padding: 7px;
+    box-shadow: 1px 1px 10px black;
+    .card-body {
+        // background-color: blue;
+        text-align: center;
+        padding: 10px;
+        padding-top: 0;
+    }
+}
