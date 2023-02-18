@@ -51,7 +51,8 @@ export const massDelete = async (productIds) => {
     if (productIds.length > 0) {
         const data = { productIds };
         try {
-            await axios.delete(process.env.REACT_APP_URL + "/api/delete-products", { data });
+            //Delete method isn't supported on free 000webhost package
+            await axios.post(process.env.REACT_APP_URL + "/api/delete-products", { data });
             return true;
         } catch (error) {
             return false;
