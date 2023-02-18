@@ -1,4 +1,4 @@
-import axios from "axios";
+
 
 export const createProduct = async (productState) => {
     let productData = {
@@ -31,20 +31,27 @@ export const createProduct = async (productState) => {
 
     // console.log(productData);
     try {
-        await axios.post(process.env.REACT_APP_URL + "/api/create-product", productData, {
-            // headers: {
-            //     "Content-Type": "application/json"
-            // }
-        });
+        const response = await fetch(process.env.REACT_APP_URL + "/api/create-product", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(productData)
+        })
+
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
 
     } catch (error) {
-        throw new Error(error.response.status);
+        throw new Error(error.message);
     }
 }
 
 export const getProducts = async () => {
-    const response = await axios.get(process.env.REACT_APP_URL + "/api/get-products");
-    return response.data;
+    const response = await fetch(process.env.REACT_APP_URL + "/api/get-products");
+    const data = await response.json();
+    return data;
 }
 
 export const massDelete = async (productIds) => {
@@ -52,7 +59,18 @@ export const massDelete = async (productIds) => {
         const data = { productIds };
         try {
             //Delete method isn't supported on free 000webhost package
-            await axios.post(process.env.REACT_APP_URL + "/api/delete-products", { data });
+            const response = await fetch(process.env.REACT_APP_URL + "/api/delete-products", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error("Couldn't delete");
+            }
+
             return true;
         } catch (error) {
             return false;
