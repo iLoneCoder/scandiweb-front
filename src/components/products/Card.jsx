@@ -13,8 +13,8 @@ function Card({ product }) {
         }
     }
     return <div className="card">
-        <div className="delete-checkbox">
-            <input type="checkbox" id="delete" name="delete" onClick={handleClick} />
+        <div >
+            <input type="checkbox" id="delete" name="delete" className="delete-checkbox" onClick={handleClick} />
         </div>
 
         <div className="card-body">
