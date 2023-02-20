@@ -15,10 +15,12 @@ export const createProduct = async (productState) => {
         }
     };
     if (productData.productType === "book") {
-        productData.size = null;
-        productData.dimension.length = null;
-        productData.dimension.width = null;
-        productData.dimension.height = null;
+        delete productData.size;
+        delete productData.dimension;
+        // productData.size = "";
+        // productData.dimension.length = "";
+        // productData.dimension.width = "";
+        // productData.dimension.height = "";
     } else if (productData.productType === "dvd") {
         productData.weight = null;
         productData.dimension.length = null;
@@ -34,8 +36,10 @@ export const createProduct = async (productState) => {
         const response = await fetch(process.env.REACT_APP_URL + "/api/create-product", {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json; charset=UTF-8",
+                "Cache-Control": "no-transform"
             },
+
             body: JSON.stringify(productData)
         })
 
@@ -62,7 +66,8 @@ export const massDelete = async (productIds) => {
             const response = await fetch(process.env.REACT_APP_URL + "/api/delete-products", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json; charset=UTF-8",
+                    "Cache-Control": "no-transform"
                 },
                 body: JSON.stringify(data)
             });
